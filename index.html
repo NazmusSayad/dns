@@ -5,10 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Block Porn - DNS</title>
+
+    <style>
+      body {
+        user-select: none;
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      p {
+        cursor: pointer;
+        font-size: calc(100vmin / 20);
+        border: 1px solid #000;
+        border-left: 0;
+        border-right: 0;
+        margin-bottom: calc(100vmin / 30);
+        margin-top: calc(100vmin / 30);
+        padding-bottom: calc(100vmin / 20);
+        padding-top: calc(100vmin / 20);
+      }
+    </style>
   </head>
   <body>
-    <h1>family-filter-dns.cleanbrowsing.org</h1>
+    <section id="family-filter">
+      <p>https://doh.cleanbrowsing.org/doh/family-filter</p>
+      <p>family-filter-dns.cleanbrowsing.org</p>
+    </section>
 
-    <h1>adult-filter-dns.cleanbrowsing.org</h1>
+    <br />
+
+    <section id="adult-filter">
+      <p>https://doh.cleanbrowsing.org/doh/adult-filter</p>
+      <p>adult-filter-dns.cleanbrowsing.org</p>
+    </section>
+
+    <script>
+      var items = document.querySelectorAll("p")
+      items.forEach(function (current) {
+        current.onclick = function () {
+          var _this = this
+          var text = this.textContent.trim()
+          navigator.clipboard.writeText(text)
+          this.style.color = "#ffb6c1"
+          setTimeout(function () {
+            _this.removeAttribute("style")
+          }, 300)
+        }
+      })
+    </script>
   </body>
 </html>
